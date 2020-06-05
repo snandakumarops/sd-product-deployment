@@ -7,11 +7,10 @@
 
 
   <groupId>com.redhat</groupId>
-  <artifactId>customer-product-service-eligibility</artifactId>
-  <version>1.0.0.0</version>
+  <artifactId>product-deployment</artifactId>
+  <version>1.0.0</version>
 
-  <name>elastic service</name>
-  <description>elastic service</description>
+
 
 
     <properties>
@@ -180,9 +179,9 @@
         <artifactId>camel-restdsl-swagger-plugin</artifactId>
         <version>2.21.0</version>
         <configuration>
-          <specificationUri>${project.basedir}/src/spec/customer-eligibility.json</specificationUri>
+          <specificationUri>${project.basedir}/src/spec/product-deployment.json</specificationUri>
           <className>CamelRoutes</className>
-          <packageName>com.redhat.offermanagement.routes</packageName>
+          <packageName>com.redhat.productdeployment</packageName>
           <outputDirectory>${project.basedir}/src/main/java</outputDirectory>
         </configuration>
       </plugin>
