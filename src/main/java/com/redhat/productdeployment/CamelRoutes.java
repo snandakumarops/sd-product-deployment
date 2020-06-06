@@ -6,6 +6,7 @@ import org.apache.camel.builder.TransformerBuilder;
 import org.apache.camel.component.servlet.CamelHttpTransportServlet;
 import org.apache.camel.model.rest.RestBindingMode;
 import org.apache.camel.model.rest.RestParamType;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
@@ -22,6 +23,9 @@ public final class CamelRoutes extends RouteBuilder {
     /**
      * Defines Apache Camel routes using REST DSL fluent API.
      */
+
+    @Value("${oc.project.path}")
+    String projectPath;
 
     @Bean
     public ServletRegistrationBean servletRegistrationBean() {
@@ -40,8 +44,8 @@ public final class CamelRoutes extends RouteBuilder {
                 .apiContextRouteId("swagger") //id of route providing the swagger endpoint
                 .host(InetAddress.getLocalHost().getHostAddress())
                 //Swagger properties
-                .contextPath("/service").port(8080)
-                .host("localhost")
+                .contextPath("/service")
+                .host(projectPath)
                 .apiProperty("api.title", "Example REST api")
                 .apiProperty("api.version", "1.0");
 
